@@ -43,13 +43,18 @@ def show_tasks():
 def show_log(count = 10):
     return show_tasks()[0:10]
 
+def show_tasks_in_current_month():
+    return "show current"
+    return show_tasks().where(Task.created_at < datetime.datetime(2013,5,19))
 
 
 
 
 create_task(u"お問い合せフォームの送信h",1,30)
-print show_tasks()
-print show_log()
+# print show_tasks()
+# print show_log()
+print show_tasks_in_current_month()
+
 
 
 
