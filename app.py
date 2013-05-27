@@ -16,10 +16,8 @@ def before_req():
 def after_req():
     pass
 
-
 shinya = Person.create(name="harada shinya",birthday=datetime.date(1989,02,19))
 print shinya
-
 
 def create_task(_content,_h = 0,_m = 0):
     return Task.create(owner = shinya,content = u"%s" % _content,h = _h, m = _m)
@@ -44,10 +42,17 @@ def show_log(count = 10):
     return show_tasks()[0:10]
 
 def show_tasks_in_current_month():
-    return "show current"
-    return show_tasks().where(Task.created_at < datetime.datetime(2013,5,19))
-
-
+    res = []
+    year =  int(str(datetime.datetime.now()).split("-")[0])
+    month = int(str(datetime.datetime.now()).split("-")[1])
+    end_date = 30
+    for d in Task.select().join(Person)\
+            .where(Person.name == 'harada shinya')\
+            .where(Task.created_at > datetime.datetime(year,month,1))\
+            .where(Task.created_at < datetime.datetime(year,month,end_date))\
+            .order_by(Task.created_at):
+                res.append(d)
+    return res
 
 
 create_task(u"お問い合せフォームの送信h",1,30)
