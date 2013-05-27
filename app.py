@@ -42,6 +42,12 @@ def show_log(count = 10):
     return show_tasks()[0:10]
 
 def show_tasks_in_current_month():
+    '''
+    show all tasks in current month
+
+    TODO: change end_date by each month.(ex. if Feburary, then end_date should
+    set to "28 or 29?")
+    '''
     res = []
     year =  int(str(datetime.datetime.now()).split("-")[0])
     month = int(str(datetime.datetime.now()).split("-")[1])
