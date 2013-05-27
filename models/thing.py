@@ -9,7 +9,7 @@ import subprocess
 
 
 
-subprocess.call("rm peewee.db",shell=True)
+# subprocess.call("rm peewee.db",shell=True)
 db = SqliteDatabase("peewee.db")
 
 class Person(Model):
@@ -34,8 +34,8 @@ class Task(Model):
 
 
 
-Person.create_table()
-Task.create_table()
+Person.create_table(True)
+Task.create_table(True)
 
 
 
