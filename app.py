@@ -50,7 +50,8 @@ def show_tasks_in_current_month():
             .where(Task.created_at < datetime.datetime(year,month,end_date))\
             .order_by(Task.created_at):
                 res.append(d)
-    return res
+    # return res
+    return [item.content for item in res]
 
 
 create_task(u"お問い合せフォームの送信h",1,30)
