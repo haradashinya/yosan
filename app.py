@@ -60,6 +60,15 @@ create_task(u"お問い合せフォームの送信h",1,30)
 print(show_tasks_in_current_month())
 
 
+@route("/")
+def index():
+    return "index is called"
+@route("/hello/:name")
+def hello(name):
+    return "<h1>Hello %s!</h1>" % name
+
+
+run(host="localhost",port=3000)
 
 
 
