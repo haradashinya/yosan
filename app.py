@@ -1,23 +1,14 @@
 #coding: utf-8
 
-from flask import Flask
 from models.thing import Person
 from models.thing import Task
 import models.thing as thing
 import datetime
-app = Flask(__name__)
 
 ITEMS = []
 
-@app.before_request
-def before_req():
-    pass
-@app.after_request
-def after_req():
-    pass
 
-shinya = Person.create(name="harada shinya",birthday=datetime.date(1989,02,19))
-print shinya
+shinya = Person.create(name="harada shinya",birthday=datetime.date(1989,2,19))
 
 def create_task(_content,_h = 0,_m = 0):
     return Task.create(owner = shinya,content = u"%s" % _content,h = _h, m = _m)
@@ -64,7 +55,7 @@ def show_tasks_in_current_month():
 create_task(u"お問い合せフォームの送信h",1,30)
 # print show_tasks()
 # print show_log()
-print show_tasks_in_current_month()
+print(show_tasks_in_current_month())
 
 
 
